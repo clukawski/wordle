@@ -16,11 +16,12 @@ type WordleEngine struct {
 	CurrentGame   *WordleGame
 }
 
-// NewWordleEngine constructs a *WordleEngine using the
-// dictionary at the path provided, and a mx number of attempts.
+// NewWordleEngine returns a pointer to a [wordle.WordleEngine],
+// using the dictionary at the path provided, and a maximum
+// number of attempts.
 //
-// The `dictionaryPath` parameter should point to a newline
-// terminated list of equal-`rune`-length word strings.
+// The dictionaryPath parameter should point to a newline
+// terminated list of equal-[rune]-length word strings.
 func NewWordleEngine(dictionaryPath string, maxAttempts int) (*WordleEngine, error) {
 	dictionary, err := openDictionary(dictionaryPath)
 	if err != nil {
@@ -40,7 +41,8 @@ func NewWordleEngine(dictionaryPath string, maxAttempts int) (*WordleEngine, err
 }
 
 // NewGame starts instantiates a new *WordleGame when there is no
-// previous game in `we.CurrentGame`, or the previous game is over.
+// previous game in [wordle.WordleEngine.CurrentGame], or the
+// previous game is over.
 func (we *WordleEngine) NewGame() error {
 	if we.CurrentGame == nil || we.CurrentGame.Status == WordleGameStatusGameOver {
 		word, err := we.RandomDictionaryWord()
@@ -73,7 +75,7 @@ func (we *WordleEngine) RandomDictionaryWord() (string, error) {
 
 // openDictionary reads a newline terminated dictionary file
 // containing equal-length words, and returns the words as a
-// slice of `string` values.
+// slice of [string] values.
 func openDictionary(path string) ([]string, error) {
 	file, err := os.ReadFile(path)
 	if err != nil {

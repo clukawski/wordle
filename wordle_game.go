@@ -25,8 +25,8 @@ const (
 	WordleGameStatusWon
 )
 
-// WordleError represents an WordleGame error response, containing
-// the current game status.
+// WordleError represents an error response used by
+// [wordle.WordleGame], containing the current game status.
 type WordleError struct {
 	Status WordleGameStatus
 }
@@ -48,7 +48,7 @@ func (wg *WordleGame) GetAnswer() string {
 // The game status is updated when a win (correct guess) or game over
 // condition (last remaining guess is incorrect) is met.
 //
-// An error is returned if the game state is `WordleStateGameOver`, or
+// An error is returned if the game state is [wordle.WordleStateGameOver], or
 // the last remaining guess was incorrect.
 func (wg *WordleGame) Attempt(word string) (bool, error) {
 	if wg.Status == WordleGameStatusGameOver {

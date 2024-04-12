@@ -1,5 +1,8 @@
 package wordle
 
+// WordleAttempt represents an attempt to guess the
+// current game answer, and the status of each character
+// as represented by the [wordle.CharacterStatus] enum.
 type WordleAttempt struct {
 	Guess  []rune
 	Result []CharacterStatus
