@@ -14,7 +14,7 @@ const (
 	CharacterStatusCorrectLocation
 )
 
-func (wa *WordleAttempt) NumberOfFinds(letter rune) int {
+func (wa *WordleAttempt) numberOfFinds(letter rune) int {
 	count := 0
 	for i, r := range wa.Guess {
 		if r == letter {
